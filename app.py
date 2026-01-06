@@ -109,8 +109,8 @@ else:
 @st.cache_data
 def load_market_data():
     # Load only necessary columns to save memory
-    return pd.read_csv('india_housing_prices.xls', usecols=['City', 'Price_in_Lakhs', 'Property_Type'])
-
+    return pd.read_csv('https://docs.google.com/spreadsheets/d/1UW4YOCGKDjbLddzl4vAT6Zn9PcnqHbpV/edit?usp=drive_link&ouid=102993098082308732946&rtpof=true&sd=true', usecols=['City', 'Price_in_Lakhs', 'Property_Type'])
+             
 market_df = load_market_data()
 
 # --- COMPLETED EDA SECTION ---
@@ -154,4 +154,5 @@ if st.checkbox("Show Market Context"):
     stat_col1, stat_col2, stat_col3 = st.columns(3)
     stat_col1.metric("Avg Price", f"₹{city_data['Price_in_Lakhs'].mean():.2f} L")
     stat_col2.metric("Median Price", f"₹{city_data['Price_in_Lakhs'].median():.2f} L")
+
     stat_col3.metric("Listings Found", f"{len(city_data)}")
