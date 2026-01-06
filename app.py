@@ -105,55 +105,56 @@ if st.sidebar.button("📊 Analyze Investment"):
 else:
     st.info("👈 Please adjust property details and click 'Analyze Investment' to see the forecast.")
 
-# --- ADD THIS TO YOUR DATA LOADING SECTION ---
-@st.cache_data
-def load_market_data():
-    # Load only necessary columns to save memory
-    return pd.read_csv('data.xlsx', usecols=['City', 'Price_in_Lakhs', 'Property_Type'])
+# # --- ADD THIS TO YOUR DATA LOADING SECTION ---
+# @st.cache_data
+# def load_market_data():
+#     # Load only necessary columns to save memory
+#     return pd.read_csv('data.xlsx', usecols=['City', 'Price_in_Lakhs', 'Property_Type'])
              
-market_df = load_market_data()
+# market_df = load_market_data()
 
-# --- COMPLETED EDA SECTION ---
-if st.checkbox("Show Market Context"):
-    st.subheader(f"📊 Market Analysis for {city}")
+# # --- COMPLETED EDA SECTION ---
+# if st.checkbox("Show Market Context"):
+#     st.subheader(f"📊 Market Analysis for {city}")
     
-    # Filter data for the selected city
-    city_data = market_df[market_df['City'] == city]
+#     # Filter data for the selected city
+#     city_data = market_df[market_df['City'] == city]
     
-    col_chart1, col_chart2 = st.columns(2)
+#     col_chart1, col_chart2 = st.columns(2)
     
-    with col_chart1:
-        st.write(f"**Price Distribution in {city}**")
-        # Create a histogram of prices in the selected city
-        fig_hist = px.histogram(
-            city_data, 
-            x="Price_in_Lakhs", 
-            nbins=30,
-            color_discrete_sequence=['#3498db'],
-            labels={'Price_in_Lakhs': 'Price (Lakhs)'}
-        )
-        fig_hist.update_layout(showlegend=False, height=350)
-        st.plotly_chart(fig_hist, use_container_width=True)
+#     with col_chart1:
+#         st.write(f"**Price Distribution in {city}**")
+#         # Create a histogram of prices in the selected city
+#         fig_hist = px.histogram(
+#             city_data, 
+#             x="Price_in_Lakhs", 
+#             nbins=30,
+#             color_discrete_sequence=['#3498db'],
+#             labels={'Price_in_Lakhs': 'Price (Lakhs)'}
+#         )
+#         fig_hist.update_layout(showlegend=False, height=350)
+#         st.plotly_chart(fig_hist, use_container_width=True)
         
-    with col_chart2:
-        st.write(f"**Average Price by Property Type**")
-        # Average price comparison
-        avg_price = city_data.groupby('Property_Type')['Price_in_Lakhs'].mean().reset_index()
-        fig_bar = px.bar(
-            avg_price, 
-            x='Property_Type', 
-            y='Price_in_Lakhs',
-            color='Property_Type',
-            text_auto='.2f'
-        )
-        fig_bar.update_layout(showlegend=False, height=350)
-        st.plotly_chart(fig_bar, use_container_width=True)
+#     with col_chart2:
+#         st.write(f"**Average Price by Property Type**")
+#         # Average price comparison
+#         avg_price = city_data.groupby('Property_Type')['Price_in_Lakhs'].mean().reset_index()
+#         fig_bar = px.bar(
+#             avg_price, 
+#             x='Property_Type', 
+#             y='Price_in_Lakhs',
+#             color='Property_Type',
+#             text_auto='.2f'
+#         )
+#         fig_bar.update_layout(showlegend=False, height=350)
+#         st.plotly_chart(fig_bar, use_container_width=True)
 
-    # Show summary statistics
-    st.write(f"**Quick Stats for {city}:**")
-    stat_col1, stat_col2, stat_col3 = st.columns(3)
-    stat_col1.metric("Avg Price", f"₹{city_data['Price_in_Lakhs'].mean():.2f} L")
-    stat_col2.metric("Median Price", f"₹{city_data['Price_in_Lakhs'].median():.2f} L")
+#     # Show summary statistics
+#     st.write(f"**Quick Stats for {city}:**")
+#     stat_col1, stat_col2, stat_col3 = st.columns(3)
+#     stat_col1.metric("Avg Price", f"₹{city_data['Price_in_Lakhs'].mean():.2f} L")
+#     stat_col2.metric("Median Price", f"₹{city_data['Price_in_Lakhs'].median():.2f} L")
 
-    stat_col3.metric("Listings Found", f"{len(city_data)}")
+#     stat_col3.metric("Listings Found", f"{len(city_data)}")
+
 
