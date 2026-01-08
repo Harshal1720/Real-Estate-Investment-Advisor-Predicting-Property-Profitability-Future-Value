@@ -10,7 +10,9 @@ Interactive Dashboard: A user-friendly Streamlit interface allowing users to inp
 
 Market Context: Provides visual data on price distributions and average prices by property type for the selected city.
 
+
 🛠️ Tech Stack
+
 Language: Python
 
 Machine Learning: Scikit-learn (Random Forest Regressor & Classifier)
@@ -22,35 +24,49 @@ Data Manipulation: Pandas, NumPy
 Visualization: Plotly Express, Matplotlib, Seaborn
 
 📂 Project Structure
+
 app.py: The main Streamlit application script containing the UI logic and visualization code.
+
 
 Untitled.ipynb: Jupyter Notebook used for data cleaning, feature engineering, and model training.
 
+
 reg_model.pkl: Trained Random Forest model for price prediction.
+
 
 clf_model.pkl: Trained Random Forest model for investment classification.
 
+
 encoders.pkl: Serialized LabelEncoders for categorical feature processing.
+
 
 requirements.txt: List of necessary Python dependencies.
 
 ⚙️ Installation & Usage
 1. Clone the Repository
+
 Bash
 
-git clone https://github.com/your-username/Real-Estate-Investment-Advisor.git
+git clone https://github.com/Harshal1720/Real-Estate-Investment-Advisor-Predicting-Property-Profitability-Future-Value.git
+
 cd Real-Estate-Investment-Advisor
+
 2. Install Dependencies
+
 Ensure you have Python installed, then run:
 
 Bash
 
 pip install -r requirements.txt
+
 3. Run the Application
 Bash
 
 streamlit run app.py
+
+
 📊 How it Works
+
 Data Processing: The model uses a dataset of approximately 250,000 property records.
 
 Target Logic:
